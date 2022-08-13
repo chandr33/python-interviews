@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "python_interview"
+version = "0.0.1"
+description = "Python Repo for Interview Practice"
+authors = ["rochak.chandra96@gmail.com"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.dev-dependencies]
+mypy = "^0.931"
+pytest = "^6.2.5"
+pytest-mock = "^3.8.1"
+
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
