@@ -7,9 +7,11 @@ class Graph:
         self.num_nodes = num_nodes
         self.directed = directed
         self.adj_list = {node: set() for node in range(self.num_nodes)}
-        self.adj_matrix = [[0 for cols in range(self.num_nodes)] for rows in range(self.num_nodes)]
+        self.adj_matrix = [[0 for _ in range(self.num_nodes)] for _ in range(self.num_nodes)]
+        self.edges = []
 
     def add_edge(self, edge: tuple):
+        self.edges.append(edge)
         self.adj_list[edge[0]].add(edge[1])
         row, col = edge
         self.adj_matrix[row][col] = 1
@@ -26,7 +28,7 @@ class Graph:
                 self.print_graph_dfs_recursive(neighbor, visited)
 
     def print_graph_dfs_stack(self, starting_node: int, visited: List[bool]):
-        stack = []
+        stack = list()
         stack.append(starting_node)
 
         while len(stack) != 0:
@@ -63,8 +65,8 @@ if __name__ == '__main__':
     graph_obj.add_edge((3, 4))
 
     node_visited = [False]*num_edges
-    #graph_obj.print_graph_dfs_recursive(1, node_visited)
+    # graph_obj.print_graph_dfs_recursive(1, node_visited)
 
-    #graph_obj.print_graph_bfs(0, node_visited)
+    # graph_obj.print_graph_bfs(0, node_visited)
 
     graph_obj.print_graph_dfs_stack(1, node_visited)
