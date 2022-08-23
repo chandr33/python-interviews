@@ -1,4 +1,4 @@
-from .print_graph import Graph
+from print_graph import Graph
 from collections import deque
 from typing import List
 

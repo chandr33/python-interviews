@@ -1,4 +1,6 @@
-from .print_graph import Graph
+from print_graph import Graph
+from typing import List
+from collections import deque
 
 
 class DetectCycle:
@@ -28,6 +30,28 @@ class DetectCycle:
             self.union(parent_x, parent_y)
         return False
 
+    def find_cycle_dfs(self, adjacencies: List[List[int]]) -> bool:
+        adj_list = {i: adjacencies[i] for i in range(len(adjacencies))}
+        visited = [False] * len(adj_list)
+
+        def dfs_util(graph, vertex, visited, parent) -> bool:
+            visited[vertex] = True
+            for neighbor in graph[vertex]:
+                if neighbor == parent:
+                    continue
+                if visited[neighbor]:
+                    return True
+                elif dfs_util(graph, neighbor, visited, vertex):
+                    return True
+            return False
+
+        for vertex, adj in adj_list.items():
+            if not visited[vertex]:
+                if dfs_util(adj_list, vertex, visited, None):
+                    return True
+
+        return False
+
 
 if __name__ == '__main__':
     """
@@ -44,3 +68,6 @@ if __name__ == '__main__':
 
     isCycle = DetectCycle(graph=graph_obj)
     print(isCycle.solve())
+
+    graph = [[1], [0, 2, 4], [1, 3], [2, 4], [1, 3]]
+    print(isCycle.find_cycle_dfs(graph))
