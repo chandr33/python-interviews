@@ -1,4 +1,4 @@
-from print_graph import Graph
+from graph_traversals import Graph
 from collections import deque
 
 

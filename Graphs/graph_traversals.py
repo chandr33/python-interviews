@@ -24,7 +24,6 @@ class Graph:
         visited[starting_node] = True
         for neighbor in self.adj_list[starting_node]:
             if not visited[neighbor]:
-                visited[neighbor] = True
                 self.print_graph_dfs_recursive(neighbor, visited)
 
     def print_graph_dfs_stack(self, starting_node: int, visited: List[bool]):
@@ -65,8 +64,8 @@ if __name__ == '__main__':
     graph_obj.add_edge((3, 4))
 
     node_visited = [False]*num_edges
-    # graph_obj.print_graph_dfs_recursive(1, node_visited)
+    graph_obj.print_graph_dfs_recursive(1, node_visited)
 
     # graph_obj.print_graph_bfs(0, node_visited)
 
-    graph_obj.print_graph_dfs_stack(1, node_visited)
+    # graph_obj.print_graph_dfs_stack(1, node_visited)
