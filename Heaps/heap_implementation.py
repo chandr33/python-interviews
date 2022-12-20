@@ -31,7 +31,7 @@ class Heaps:
                 break
             else:
                 temp = self.heap[curr_index]
-                self.heap[curr_index] =  self.heap[smaller_child_index]
+                self.heap[curr_index] = self.heap[smaller_child_index]
                 self.heap[smaller_child_index] = temp
 
             curr_index = smaller_child_index
